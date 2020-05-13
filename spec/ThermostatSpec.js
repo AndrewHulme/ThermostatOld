@@ -34,4 +34,11 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('Power Saving Mode', function(){
+    it('Checks PSM is on by default', function(){
+      expect(thermostat.powerSavingMode).toBe(true);
+    });
+  });
+
+
 });
