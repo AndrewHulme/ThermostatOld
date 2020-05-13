@@ -1,6 +1,9 @@
+'strict mode';
+
 class Thermostat {
   constructor(){
-    this.temperature = 20;
+    this.DEFAULT_TEMPERATURE = 20;
+    this.temperature = this.DEFAULT_TEMPERATURE;
     this.powerSavingMode = true;
   }
 
@@ -15,8 +18,13 @@ class Thermostat {
     this._checktemperature();
   }
 
+  reset() {
+    this.temperature = this.DEFAULT_TEMPERATURE;
+  }
+
   togglePowerSavingMode() {
     this.powerSavingMode = !this.powerSavingMode;
+    this._checktemperature();
   }
 
   _checktemperature(){

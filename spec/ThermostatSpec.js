@@ -49,6 +49,14 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('Reset', function() {
+    it('resets the temperature to 20', function() {
+      thermostat.up(3);
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
+
   describe('Power Saving Mode', function(){
     it('Checks PSM is on by default', function(){
       expect(thermostat.powerSavingMode).toBe(true);
@@ -60,7 +68,12 @@ describe('Thermostat', function(){
       thermostat.togglePowerSavingMode();
       expect(thermostat.powerSavingMode).toBe(false);
     });
+
+    it('sets temperature to limit if toggled off', function() {
+      thermostat.togglePowerSavingMode();
+      thermostat.up(10);
+      thermostat.togglePowerSavingMode();
+      expect(thermostat.temperature).toEqual(25);
+    })
   });
-
-
 });
