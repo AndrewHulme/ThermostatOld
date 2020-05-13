@@ -20,6 +20,13 @@ describe('Thermostat', function(){
       thermostat.up(5)
       expect(thermostat.temperature).toEqual(25);
     });
+
+    describe('power saving on', function() {
+      it('cannot go above 25', function() {
+        thermostat.up(6);
+        expect(thermostat.temperature).toEqual(25);
+      });
+    });
   });
 
   describe('Down', function(){

@@ -6,6 +6,7 @@ class Thermostat {
 
   up(number){
     this.temperature += number;
+    this._checktemperature();
   }
 
   down(number){
@@ -15,6 +16,9 @@ class Thermostat {
   }
 
   _checktemperature(){
+    if(this.powerSavingMode && this.temperature > 25) {
+      this.temperature = 25;
+    }
     if (this.temperature < 10){
       this.temperature = 10;
     }
