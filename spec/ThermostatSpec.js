@@ -76,4 +76,22 @@ describe('Thermostat', function(){
       expect(thermostat.temperature).toEqual(25);
     })
   });
+
+  describe('currentEnergyUsage', function(){
+    it('Low-usage under 18 degrees', function(){
+      thermostat.down(3);
+      expect(thermostat.currentEnergyUsage()).toEqual('low-usage');
+    });
+
+    it('Returns medium-usage under 25 degrees', function(){
+      expect(thermostat.currentEnergyUsage()).toEqual('medium-usage');
+    });
+
+    it('Returns high-usage over 25 degrees', function(){
+      thermostat.up(300);
+      expect(thermostat.currentEnergyUsage()).toEqual('high-usage');
+    });
+
+  });
+
 });
