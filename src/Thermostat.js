@@ -15,9 +15,16 @@ class Thermostat {
     this._checktemperature();
   }
 
+  togglePowerSavingMode() {
+    this.powerSavingMode = !this.powerSavingMode;
+  }
+
   _checktemperature(){
     if(this.powerSavingMode && this.temperature > 25) {
       this.temperature = 25;
+    }
+    if(!this.powerSavingMode && this.temperature > 32) {
+      this.temperature = 32;
     }
     if (this.temperature < 10){
       this.temperature = 10;

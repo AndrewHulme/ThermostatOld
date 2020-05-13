@@ -27,6 +27,14 @@ describe('Thermostat', function(){
         expect(thermostat.temperature).toEqual(25);
       });
     });
+
+    describe('power saving off', function() {
+      it('cannot go above 32', function() {
+        thermostat.togglePowerSavingMode();
+        thermostat.up(13);
+        expect(thermostat.temperature).toEqual(32);
+      });
+    });
   });
 
   describe('Down', function(){
@@ -44,6 +52,13 @@ describe('Thermostat', function(){
   describe('Power Saving Mode', function(){
     it('Checks PSM is on by default', function(){
       expect(thermostat.powerSavingMode).toBe(true);
+    });
+  });
+
+  describe('togglePowerSavingMode', function() {
+    it('toggles power saving mode', function() {
+      thermostat.togglePowerSavingMode();
+      expect(thermostat.powerSavingMode).toBe(false);
     });
   });
 
